@@ -90,12 +90,12 @@ def take_photo(filename='photo.jpg', quality=0.8):
   # grayscale img
   gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
   print(gray.shape)
-  # get face bounding box coordinates using Haar Cascade
+  # get face coordinates using Haar Cascade
   faces = face_cascade.detectMultiScale(gray)
   # blur face on image
   for (x,y,w,h) in faces:
       blurArea = img[y:y+h, x:x+w]
-      img = cv2.GaussianBlur(blurArea,(51,51),5)
+      img = cv2.blur(blurArea,(21,21))
   # save image
   cv2.imwrite(filename, img)
 
